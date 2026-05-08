@@ -1,0 +1,425 @@
+/* Navbar component implemented following the tutorial by Code_Jungle:
+    • YouTube: https://www.youtube.com/@CodeJungle
+    • Instagram: https://www.instagram.com/code.jungle/
+    • GitHub: https://github.com/codeboysk
+    • Video Reference: https://youtu.be/h5apE3E72wY?si=9W9CfMttM9Fk8WGT
+    Thank you, @Code_Jungle, for the clear guidance! */
+
+.navbar-toggler {
+  border: none;
+  font-size: 1.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar {
+  background-color: #fff;
+  height: 80px;
+  margin: 20px;
+  border-radius: 16px;
+  padding: 0.5rem;
+}
+
+.navbar-toggler:focus,
+.button-close:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.link-nav {
+  color: #666777;
+  font-weight: 500;
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .nav-link:hover,
+  .nav-link.active {
+    color: #000;
+  }
+
+  .link-nav::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background-color: #2074d3;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+  }
+
+  .link-nav:hover::before,
+  .link-nav.active::before {
+    width: 100%;
+    visibility: visible;
+    color: #2074d3;
+  }
+
+  .link-nav-dropdown::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background-color: #2074d3;
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+  }
+
+  .link-nav-dropdown:hover::before,
+  .link-nav-dropdown.active::before {
+    width: 50%;
+    visibility: visible;
+    color: #2074d3;
+  }
+}
+
+.link-nav-dropdown {
+  color: #666777;
+  font-weight: 500;
+  position: relative;
+}
+
+/* Offcanvas styling */
+.offcanvas-header {
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.offcanvas-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Mobile navbar adjustments */
+@media (max-width: 991.98px) {
+  .navbar {
+    margin: 10px;
+    height: 70px;
+  }
+
+  .navbar-brand img {
+    height: 35px;
+  }
+}
+
+/* Ensure proper spacing for offcanvas */
+.offcanvas-body {
+  padding-top: 0;
+}
+
+.navbar-nav .nav-item {
+  margin-bottom: 0.5rem;
+}
+
+.navbar-nav .nav-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Additional styling to match template */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+  transform: scale(1.05);
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #2074d3;
+}
+
+/* Ensure navbar is properly positioned */
+.navbar.fixed-top {
+  z-index: 1030;
+}
+
+/* Offcanvas positioning */
+.offcanvas {
+  z-index: 1040;
+}
+
+/* Ensure offcanvas body is clickable */
+.offcanvas-body {
+  pointer-events: auto;
+  z-index: 1041;
+}
+
+/* Ensure nav links are clickable */
+.offcanvas .nav-link {
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 1042;
+}
+
+/* Ensure dropdown items are clickable */
+.offcanvas .dropdown-item {
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 1043;
+}
+
+/* Fix any potential overlay issues */
+.offcanvas.show {
+  pointer-events: auto;
+}
+
+.offcanvas.show .offcanvas-body {
+  pointer-events: auto;
+}
+
+.offcanvas.show .nav-link {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.offcanvas.show .dropdown-item {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Ensure dropdown menu is clickable */
+.offcanvas .dropdown-menu {
+  pointer-events: auto;
+  z-index: 1044;
+}
+
+/* Remove any potential blocking elements */
+.offcanvas * {
+  pointer-events: auto !important;
+}
+
+/* Force clickable elements */
+.offcanvas .nav-link,
+.offcanvas .dropdown-item,
+.offcanvas .dropdown-toggle {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+/* Make sure all clickable areas are accessible */
+.offcanvas .navbar-nav .nav-item {
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 9998 !important;
+}
+
+.offcanvas .navbar-nav .nav-item .nav-link {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+/* Ensure proper display */
+.offcanvas .nav-link {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.75rem 1rem !important;
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  color: #666777 !important;
+  transition: all 0.3s ease !important;
+}
+
+.offcanvas .nav-link:hover {
+  color: #000 !important;
+  background-color: #f8f9fa !important;
+  pointer-events: auto !important;
+}
+
+.offcanvas .dropdown-item {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.5rem 1rem !important;
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  color: #666777 !important;
+  transition: all 0.3s ease !important;
+}
+
+.offcanvas .dropdown-item:hover {
+  color: #000 !important;
+  background-color: #f8f9fa !important;
+  pointer-events: auto !important;
+}
+
+/* Remove any potential overlays or blocking elements */
+.offcanvas-backdrop {
+  pointer-events: none !important;
+}
+
+.offcanvas.show {
+  pointer-events: auto !important;
+}
+
+.offcanvas.show * {
+  pointer-events: auto !important;
+}
+
+/* Ensure nav items are fully clickable */
+.offcanvas .navbar-nav {
+  pointer-events: auto !important;
+  z-index: 10000 !important;
+}
+
+.offcanvas .navbar-nav li {
+  pointer-events: auto !important;
+  z-index: 10001 !important;
+}
+
+.offcanvas .navbar-nav li a {
+  pointer-events: auto !important;
+  z-index: 10002 !important;
+  cursor: pointer !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 40px !important;
+  padding: 12px 16px !important;
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  color: #666777 !important;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+  transition: all 0.3s ease !important;
+}
+
+.offcanvas .navbar-nav li a:hover {
+  color: #000 !important;
+  background-color: #f8f9fa !important;
+  pointer-events: auto !important;
+}
+
+/* Specific fix for nav items */
+.offcanvas .navbar-nav .nav-item {
+  pointer-events: auto;
+}
+
+.offcanvas .navbar-nav .nav-item .nav-link {
+  pointer-events: auto;
+  cursor: pointer;
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #666777;
+  transition: color 0.15s ease-in-out;
+}
+
+.offcanvas .navbar-nav .nav-item .nav-link:hover {
+  color: #000;
+  pointer-events: auto;
+}
+
+/* Ensure toggler is clickable */
+.navbar-toggler {
+  z-index: 1031;
+  position: relative;
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    display: none;
+  }
+
+  .navbar-toggler {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-toggler {
+    display: none !important;
+  }
+
+  .navbar-collapse {
+    display: flex !important;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+  }
+}
+
+/* Ensure toggler is always visible on mobile */
+.navbar-toggler {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.55);
+  text-decoration: none;
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+.navbar-toggler:hover {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem;
+}

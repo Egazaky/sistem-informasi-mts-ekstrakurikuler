@@ -1,0 +1,341 @@
+/* =====================================
+   LANDING PAGE SMKN MAKASSAR - REDESIGN
+   ===================================== */
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* HEADER */
+.header {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background 0.3s ease-in-out;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    width: 60px;
+    height: 60px;
+}
+
+.logo-text h1 {
+    font-size: 1.5rem;
+    color: #006b3c;
+    font-weight: 700;
+}
+
+.logo-text p {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* NAVIGATION */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu li a {
+    position: relative;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-menu li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: #006b3c;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-menu li a:hover::after,
+.nav-menu li a.active::after {
+    width: 100%;
+}
+
+/* HERO SECTION */
+.hero {
+    margin-top: 90px;
+    padding: 5rem 0;
+    background: url('../images/hero-bg.svg') no-repeat center/cover;
+    color: #fff;
+    text-align: left;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    padding: 0 2rem;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin: 1rem 0 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background: #ffd700;
+    color: #006b3c;
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.btn-secondary:hover {
+    background: #fff;
+    color: #006b3c;
+}
+
+/* SAMBUTAN */
+.welcome {
+    padding: 5rem 2rem;
+    background: #fff;
+}
+
+.welcome-container {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 3rem;
+}
+
+.kepala-sekolah-img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 5px solid #ffd700;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.welcome-content h3 {
+    font-size: 2.2rem;
+    color: #006b3c;
+    margin-bottom: 1rem;
+}
+
+.welcome-content p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* JURUSAN */
+.jurusan {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.jurusan-container h3 {
+    font-size: 2rem;
+    color: #006b3c;
+    margin-bottom: 2rem;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* BERITA */
+.berita {
+    padding: 5rem 2rem;
+    background: #fff;
+    text-align: center;
+}
+
+.berita-container h3 {
+    font-size: 2rem;
+    color: #006b3c;
+    margin-bottom: 2rem;
+}
+
+.berita-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.berita-item {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.berita-item:hover {
+    transform: translateY(-8px);
+}
+
+.berita-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/* KONTAK */
+.kontak {
+    padding: 5rem 2rem;
+    background: #006b3c;
+    color: #fff;
+    text-align: center;
+}
+
+.kontak-container h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.kontak-container p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* FOOTER */
+.footer {
+    background: #004d2b;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.95rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero-container,
+    .welcome-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: fixed;
+        top: 80px;
+        right: 0;
+        width: 250px;
+        background: #fff;
+        padding: 2rem;
+        box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.nav-menu-active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    .hamburger-line {
+        width: 25px;
+        height: 3px;
+        background: #333;
+        border-radius: 3px;
+    }
+}
