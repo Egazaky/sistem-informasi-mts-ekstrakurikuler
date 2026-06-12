@@ -155,3 +155,73 @@ Route::get('/pendaftaran', [LandingController::class, 'pendaftaran'])->name('pen
 Route::post('/pendaftaran', [LandingController::class, 'storePendaftaran'])->name('pendaftaran.store');
 Route::get('/berita', [LandingController::class, 'berita'])->name('landing-berita');
 Route::get('/berita/{id}', [LandingController::class, 'showBerita'])->name('landing-berita-show');
+
+// =========== PRESTI ROUTES ===========
+Route::prefix('presti')->name('presti.')->group(function () {
+    // Auth (public)
+    Route::get('/login', [\App\Http\Controllers\Presti\PrestiAuthController::class, 'showLogin'])->name('login');
+    Route::post('/login', [\App\Http\Controllers\Presti\PrestiAuthController::class, 'prosesLogin']);
+    Route::get('/logout', [\App\Http\Controllers\Presti\PrestiAuthController::class, 'logout'])->name('logout');
+
+    // Protected routes
+    Route::middleware('cekPresti')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Presti\PrestiDashboardController::class, 'index'])->name('dashboard');
+
+        // Admin only
+        Route::middleware('cekPrestiRole:admin')->group(function () {
+            // Siswa CRUD
+            Route::get('/siswa', [\App\Http\Controllers\Presti\PrestiSiswaController::class, 'index'])->name('siswa.index');
+            Route::post('/siswa', [\App\Http\Controllers\Presti\PrestiSiswaController::class, 'store'])->name('siswa.store');
+            Route::put('/siswa/{id}', [\App\Http\Controllers\Presti\PrestiSiswaController::class, 'update'])->name('siswa.update');
+            Route::delete('/siswa/{id}', [\App\Http\Controllers\Presti\PrestiSiswaController::class, 'destroy'])->name('siswa.destroy');
+            Route::get('/siswa/template', [\App\Http\Controllers\Presti\PrestiSiswaController::class, 'downloadTemplate'])->name('siswa.template');
+            Route::post('/siswa/import', [\App\Http\Controllers\Presti\PrestiSiswaController::class, 'importCSV'])->name('siswa.import');
+
+            // Cetak QR batch
+            Route::get('/absensi/cetak-qr', [\App\Http\Controllers\Presti\PrestiAbsensiController::class, 'cetakQR'])->name('absensi.cetak-qr');
+
+            // Tagihan Manage
+            Route::get('/tagihan', [\App\Http\Controllers\Presti\PrestiTagihanController::class, 'manage'])->name('tagihan.manage');
+            Route::post('/tagihan', [\App\Http\Controllers\Presti\PrestiTagihanController::class, 'store'])->name('tagihan.store');
+            Route::put('/tagihan/{id}', [\App\Http\Controllers\Presti\PrestiTagihanController::class, 'update'])->name('tagihan.update');
+            Route::delete('/tagihan/{id}', [\App\Http\Controllers\Presti\PrestiTagihanController::class, 'destroy'])->name('tagihan.destroy');
+            Route::post('/tagihan/{id}/cash', [\App\Http\Controllers\Presti\PrestiTagihanController::class, 'bayarCash'])->name('tagihan.cash');
+            Route::post('/tagihan/{id}/setuju', [\App\Http\Controllers\Presti\PrestiTagihanController::class, 'verifikasiSetuju'])->name('tagihan.setuju');
+            Route::post('/tagihan/{id}/tolak', [\App\Http\Controllers\Presti\PrestiTagihanController::class, 'verifikasiTolak'])->name('tagihan.tolak');
+        });
+
+        // Admin & Guru
+        Route::middleware('cekPrestiRole:admin,guru')->group(function () {
+            // Dashboards
+            Route::get('/dashboard/admin', [\App\Http\Controllers\Presti\PrestiDashboardController::class, 'admin'])->name('dashboard.admin');
+            Route::get('/dashboard/guru', [\App\Http\Controllers\Presti\PrestiDashboardController::class, 'guru'])->name('dashboard.guru');
+
+            // Scan Absensi
+            Route::get('/absensi/scan', [\App\Http\Controllers\Presti\PrestiAbsensiController::class, 'scan'])->name('absensi.scan');
+            Route::post('/absensi/scan', [\App\Http\Controllers\Presti\PrestiAbsensiController::class, 'scanProcess']);
+            Route::get('/absensi/riwayat', [\App\Http\Controllers\Presti\PrestiAbsensiController::class, 'getRiwayat'])->name('absensi.riwayat');
+
+            // Analisis
+            Route::get('/analisis/kelas', [\App\Http\Controllers\Presti\PrestiAnalisisController::class, 'kelas'])->name('analisis.kelas');
+
+            // Export Excel
+            Route::get('/absensi/export', [\App\Http\Controllers\Presti\PrestiAbsensiController::class, 'exportExcel'])->name('absensi.export');
+        });
+
+        // Siswa only
+        Route::middleware('cekPrestiRole:siswa')->group(function () {
+            Route::get('/dashboard/siswa', [\App\Http\Controllers\Presti\PrestiDashboardController::class, 'siswa'])->name('dashboard.siswa');
+            Route::get('/qr-siswa', [\App\Http\Controllers\Presti\PrestiQRController::class, 'index'])->name('qr-siswa');
+            Route::get('/tagihan/siswa', [\App\Http\Controllers\Presti\PrestiTagihanController::class, 'tagihanSiswa'])->name('tagihan.siswa');
+            Route::get('/password', [\App\Http\Controllers\Presti\PrestiPasswordController::class, 'index'])->name('password');
+            Route::post('/password', [\App\Http\Controllers\Presti\PrestiPasswordController::class, 'update'])->name('password.update');
+        });
+
+        // Ortu only
+        Route::middleware('cekPrestiRole:ortu')->group(function () {
+            Route::get('/dashboard/ortu', [\App\Http\Controllers\Presti\PrestiDashboardController::class, 'ortu'])->name('dashboard.ortu');
+            Route::get('/tagihan/ortu', [\App\Http\Controllers\Presti\PrestiTagihanController::class, 'tagihanOrtu'])->name('tagihan.ortu');
+            Route::post('/tagihan/{id}/upload', [\App\Http\Controllers\Presti\PrestiTagihanController::class, 'uploadBukti'])->name('tagihan.upload');
+        });
+    });
+});

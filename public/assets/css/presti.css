@@ -1,0 +1,414 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Outfit', sans-serif;
+    color: #334155;
+    overflow-x: hidden; /* Mencegah scroll menyamping */
+}
+
+/* Sembunyikan bilah scrollbar bawaan browser tapi tetap bisa scroll */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.1); 
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.2); 
+}
+
+/* ========================================================================= */
+/* GLASSMORPHISM NAVBAR                                                      */
+/* ========================================================================= */
+.navbar {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+    height: 60px;
+}
+
+.navbar-brand {
+    color: #4f46e5 !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.2rem !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+}
+
+.navbar-brand img {
+    height: 40px !important;
+    width: auto !important;
+    margin-right: 14px !important;
+    object-fit: contain;
+}
+
+/* Fix logout link inside navbar if any */
+.navbar .btn-outline-light {
+    color: #ef4444 !important;
+    border-color: #ef4444 !important;
+    font-weight: 500;
+}
+.navbar .btn-outline-light:hover {
+    background-color: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+/* ========================================================================= */
+/* MODERN SIDEBAR                                                            */
+/* ========================================================================= */
+.sidebar {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background: #ffffff;
+    border-right: 1px solid #f1f5f9;
+    height: calc(100vh - 60px);
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important;  /* IE and Edge */
+}
+
+/* Hide scrollbar for sidebar specifically in Chrome, Safari and Opera */
+.sidebar::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+}
+
+.sidebar a {
+    color: #64748b;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 12px;
+    margin: 4px 16px;
+    font-weight: 500;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Make icons consistent */
+.sidebar a i {
+    font-size: 1.15rem;
+    margin-right: 12px;
+}
+
+.sidebar a:hover {
+    background: #f8fafc;
+    color: #4f46e5;
+}
+
+.sidebar a.active {
+    background: #eef2ff;
+    color: #4f46e5;
+    font-weight: 600;
+}
+
+/* Perfect straight left border instead of weird box-shadow rounding */
+.sidebar a.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: #4f46e5;
+}
+
+/* For logout btn in sidebar */
+.sidebar .text-danger, .sidebar .text-danger.fw-bold {
+    color: #ef4444 !important;
+}
+.sidebar .text-danger:hover {
+    background: #fef2f2 !important;
+}
+
+/* ========================================================================= */
+/* PREMIUM CARDS                                                             */
+/* ========================================================================= */
+.card {
+    background: #ffffff;
+    border: none !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025) !important;
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.card-header {
+    background: transparent !important;
+    border-bottom: 1px solid #f8fafc !important;
+    padding: 24px 24px 16px 24px !important;
+}
+.card-header h6, .card-header h5 {
+    margin-bottom: 0;
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.card-body {
+    padding: 24px !important;
+}
+
+/* ========================================================================= */
+/* TYPOGRAPHY & TEXT                                                         */
+/* ========================================================================= */
+h1, h2, h3, h4, h5, h6 {
+    color: #1e293b;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.text-muted {
+    color: #94a3b8 !important;
+}
+
+/* ========================================================================= */
+/* BUTTONS                                                                   */
+/* ========================================================================= */
+.btn {
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    padding: 10px 20px !important;
+    transition: all 0.2s ease !important;
+    white-space: nowrap !important;
+}
+
+
+.btn-sm {
+    padding: 6px 12px !important;
+    border-radius: 8px !important;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4f46e5, #6366f1) !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3) !important;
+    color: #fff !important;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #4338ca, #4f46e5) !important;
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4) !important;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981, #34d399) !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+    color: #fff !important;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #059669, #10b981) !important;
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4) !important;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444, #f87171) !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+    color: #fff !important;
+}
+.btn-danger:hover {
+    box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4) !important;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24) !important;
+    border: none !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3) !important;
+}
+.btn-warning:hover {
+    box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4) !important;
+    color: white !important;
+}
+
+/* ========================================================================= */
+/* TABLES                                                                    */
+/* ========================================================================= */
+.table-responsive {
+    border-radius: 12px;
+}
+.table {
+    border-collapse: separate !important;
+    border-spacing: 0 8px !important;
+    background: transparent !important;
+    margin-bottom: 0 !important;
+}
+
+.table th {
+    border-bottom: 2px solid #e2e8f0 !important;
+    border-top: none !important;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    padding: 16px !important;
+    background: transparent !important;
+}
+
+.table td {
+    background: #ffffff;
+    border: none !important;
+    padding: 16px !important;
+    vertical-align: middle;
+}
+
+.table tr {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+    transition: box-shadow 0.2s ease;
+}
+
+.table tr:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.table tr td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.table tr td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* ========================================================================= */
+/* MODALS                                                                    */
+/* ========================================================================= */
+.modal-content {
+    border-radius: 24px !important;
+    border: none !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+    overflow: hidden;
+}
+
+.modal-header {
+    border-bottom: 1px solid #f8fafc !important;
+    padding: 24px 24px 16px 24px !important;
+}
+
+.modal-header.bg-primary, 
+.modal-header.bg-success, 
+.modal-header.bg-warning, 
+.modal-header.bg-danger {
+    background: transparent !important;
+    border-bottom: 1px solid #f8fafc !important;
+}
+
+.modal-title {
+    color: #1e293b !important;
+    font-weight: 800;
+}
+.modal-header i {
+    color: #4f46e5;
+    margin-right: 8px;
+}
+
+.modal-header .btn-close {
+    filter: invert(0) !important;
+    opacity: 0.5;
+}
+
+/* ========================================================================= */
+/* FORM INPUTS                                                               */
+/* ========================================================================= */
+.form-control, .form-select {
+    border-radius: 12px;
+    border: 1px solid #cbd5e1;
+    padding: 14px 16px;
+    font-size: 0.95rem;
+    background-color: #f8fafc;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+/* ========================================================================= */
+/* LAYOUT HELPERS                                                            */
+/* ========================================================================= */
+.content, .main-content {
+    margin-top: 60px; /* Base for fixed navbar offset */
+    padding: 40px;
+    min-height: calc(100vh - 60px);
+}
+
+/* No container-fluid or row overrides needed as Bootstrap grid handles horizontal padding. Body overflow-x hidden fixes scrollbar. */
+
+/* Responsive Overrides */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed !important;
+        width: 260px !important;
+        height: 100vh !important;
+        top: 0 !important;
+        left: -260px;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 9999 !important;
+        margin-top: 0 !important;
+        padding-top: 80px !important;
+        border-right: 1px solid #e2e8f0 !important;
+        box-shadow: 5px 0 25px rgba(0,0,0,0.15);
+    }
+    .sidebar.show {
+        left: 0;
+    }
+    .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.5);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        z-index: 9998 !important;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .sidebar-overlay.show {
+        display: block;
+        opacity: 1;
+    }
+    .content, .main-content {
+        margin-top: 60px !important;
+        padding: 24px 16px !important;
+    }
+    .col-md-10.offset-md-2 {
+        margin-left: 0 !important;
+    }
+}
